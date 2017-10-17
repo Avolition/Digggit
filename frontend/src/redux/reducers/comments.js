@@ -26,13 +26,13 @@ function comments(state = [], action) {
   if(typeof action.commentId !== 'undefined') {
     switch(action.type){
       case CREATE_COMMENT :
-        console.log('CREATE_COMMENT TRIGGERED');
+        console.log('CREATE_COMMENT TRIGGERED: ', action);
         return state;
       case UPDATE_COMMENT :
-        console.log('UPDATE_COMMENT TRIGGERED');
+        console.log('UPDATE_COMMENT TRIGGERED: ', action);
         return state;
       case DELETE_COMMENT :
-        console.log('DELETE_COMMENT TRIGGERED');
+        console.log('DELETE_COMMENT TRIGGERED: ', action);
         return state;
       default :
         return state;
