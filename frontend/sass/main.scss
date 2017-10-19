@@ -8,7 +8,6 @@ $font-stack: Helvetica, sans-serif;
 
 html {
   font-size: 10px;
-  color: red;
   font-family: 'helvetica neue', Helvetica, sans-serif;
   
   body {
@@ -27,6 +26,7 @@ html {
         width: 100%;
         display: flex;
         justify-content: center;
+
         main {
           width: 100%;
           display: flex;
@@ -53,45 +53,121 @@ html {
               text-align: center;
               font-size: 2.5rem;
 
-              .categories {
-                list-style: none;
-                flex: 1;
-                padding: 0;
-                display: flex;
-                flex-direction: column;
-                color: dodgerblue;
+              ul {
+                h6 {
+                  color: white;
+                  text-shadow: 0 0 15px dodgerblue, 0 0 20px dodgerblue;
+                  margin: 1rem 0;
+                  font-size: 1.6rem;
+                }
+                li {
+                  list-style: none;
+                  padding: 0;
 
-                .category {
-                  display: flex;
+                }
+              }
+              
+              .categories,
+              .sortByList {
+                list-style: none;
+                padding: 0;
+                flex-direction: column;
+                color: blue;
+                text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 10px dodgerblue, 0 0 15px dodgerblue, 0 0 20px dodgerblue, 0 0 25px dodgerblue;
+                text-align: center;
+
+                .category,
+                .sortByField {
                   padding: 1rem;
                   background-color: rgba(0,0,0,0.2);
+                  align-self: center;
+                  cursor: pointer;
+
                   &:hover {
                     color: blue;
-                    background-color: rgba(0,0,0,0.5);
+                    background-color: rgba(255,255,255,0.2);
+                  }
+                  &.active {
+                    background-color: rgba(255,255,255,0.2);
+                  }
+                }
+                a {
+                  text-decoration: none;
+                  &:visited {
+                    color:inherit;
                   }
                 }
               }
             } // aside
 
-            .posts,
-            .sortByList {
+            .posts {
               list-style: none;
               flex: 5;
               padding: 0;
-              h6 {
-                color: white;
-                margin: 1rem 0;
-                font-size: 1.6rem;
-              }
-              li {
+
+              .post {
                 margin: 5px;
                 font-size: 2rem;
                 padding: 1rem;
                 background-color: rgba(0,0,0,0.5);
-                &:hover {
-                  background-color: rgba(0,0,0,0.8);
-                  box-shadow: 0 0 0.1px 0.1px white;
+                display: flex;
+
+                div {
+                  &.rank-vote {
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    font-size: 3rem;
+                    color: white;
+
+                    span {
+                      padding: 0 1rem;
+                    }
+
+                    .rank {
+                      color: white;
+                      text-shadow: 0 0 15px dodgerblue, 0 0 20px dodgerblue;
+                    }
+
+                    .score {
+                      
+                    }
+                  }
+
+                  &.post-title {
+                    flex: 5;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    font-size: 1.5rem;
+                    color: grey;
+
+                    a {
+                      text-decoration: none;
+                      margin-bottom: 5px;
+
+                      .title {
+                        font-size: 2rem;
+                        color: white;
+                        text-shadow: 0 0 15px dodgerblue, 0 0 20px dodgerblue;
+                      }
+                    }
+
+                  }
                 }
+
+                &:hover {
+                  background-color: rgba(255,255,255,0.2);
+                }
+                &.active {
+                  background-color: rgba(255,255,255,0.2);
+                }
+              }
+              .noData {
+                text-align: center;
+                font-size: 2rem;
+                padding: 1rem;
+                color: white;
               }
             }
 

@@ -1,12 +1,20 @@
+export const LOAD_COMMENTS = 'LOAD_COMMENTS'
 export const CREATE_COMMENT = 'CREATE_COMMENT'
 export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 
-export function createComment ({ commentId, parentPostId, timestamp, body, author,  voteScore }) {
+export function loadComments ( comments ) {
+  return {
+    type: LOAD_COMMENTS,
+    comments
+  }
+}
+
+export function createComment ({ id, parentId, timestamp, body, author,  voteScore }) {
   return {
     type: CREATE_COMMENT,
-    commentId,
-    parentPostId,
+    id,
+    parentId,
     timestamp,
     body,
     author,
@@ -14,10 +22,10 @@ export function createComment ({ commentId, parentPostId, timestamp, body, autho
   }
 }
 
-export function updateComment ({ commentId, timestamp, body, author, voteScore }) {
+export function updateComment ({ id, timestamp, body, author, voteScore }) {
   return {
     type: UPDATE_COMMENT,
-    commentId,
+    id,
     timestamp,
     body,
     author,
@@ -25,9 +33,9 @@ export function updateComment ({ commentId, timestamp, body, author, voteScore }
   }
 }
 
-export function deleteComment ({ commentId }) {
+export function deleteComment ({ id }) {
   return {
     type: DELETE_COMMENT,
-    commentId
+    id
   }
 }

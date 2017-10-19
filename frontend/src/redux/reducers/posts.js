@@ -1,5 +1,6 @@
 // import action creators
 import {
+  LOAD_POSTS,
   CREATE_POST,
   UPDATE_POST,
   DELETE_POST,
@@ -24,13 +25,39 @@ import {
 // }
 
 function posts(state = [], action) {
-  if(typeof action.postId !== 'undefined') {
+  if(typeof action.type !== 'undefined') {
     switch(action.type){
+      case LOAD_POSTS :
+        const initialState = {}
+          action.posts.forEach(post => {
+            initialState[post.id] = {
+              id: post.id,
+              timestamp: post.timestamp,
+              title: post.title,
+              body: post.body,
+              author: post.author,
+              category: post.category,
+              voteScore: post.voteScore
+            }
+        })
+        return initialState
       case CREATE_POST :
-        console.log('CREATE_POST TRIGGERED: ', action);
-        return state;
+        return {
+          ...state,
+            [action.id]: {
+              id: action,
+              timestamp: action.timestamp,
+              title: action.title,
+              body: action.body,
+              author: action.author,
+              category: action.category,
+              voteScore: action.voteScore
+            }
+        };
       case UPDATE_POST :
+      
         console.log('UPDATE_POST TRIGGERED: ', action);
+
         return state;
       case DELETE_POST :
         console.log('DELETE_POST TRIGGERED: ', action);

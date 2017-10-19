@@ -1,5 +1,4 @@
-export const categories = {
-  categories: [
+export const categories = [
       {
         name: 'react',
         path: 'react'
@@ -13,7 +12,6 @@ export const categories = {
         path: 'udacity'
       }
   ]
-}
 
 export const comments = {
   "894tuq4ut84ut8v4t8wun89g": {

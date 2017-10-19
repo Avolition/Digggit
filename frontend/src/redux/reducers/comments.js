@@ -1,5 +1,6 @@
 // import action creators
 import {
+  LOAD_COMMENTS,
   CREATE_COMMENT,
   UPDATE_COMMENT,
   DELETE_COMMENT,
@@ -23,8 +24,21 @@ import {
 // }
 
 function comments(state = [], action) {
-  if(typeof action.commentId !== 'undefined') {
+  if(typeof action.type !== 'undefined') {
     switch(action.type){
+      case LOAD_COMMENTS :
+        const initialState = {}
+          action.comments.forEach(c => {
+            initialState[c.id] = {
+              id: c.id,
+              parentId: c.parentId,
+              timestamp: c.timestamp,
+              body: c.body,
+              author: c.author,
+              voteScore: c.voteScore,
+            }
+        })
+        return initialState
       case CREATE_COMMENT :
         console.log('CREATE_COMMENT TRIGGERED: ', action);
         return state;
