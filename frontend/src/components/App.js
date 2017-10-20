@@ -12,15 +12,13 @@ class App extends Component {
 
     return (
       <div className="app">
-        <Route
-          path='/'
-          render={() => (
-            <main>
-              <Header title='Diggit' />
-              <Main />
-            </main>
-          )}
-        />
+        <main>
+          <Route path="/"
+            render={() => (
+              <Header title='Diggit'/>
+            )} />
+          <Route path="/:category" component={Main} />
+        </main>
       </div>
     )
   } // render

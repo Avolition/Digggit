@@ -13,13 +13,14 @@ const headers = {
   'Authorization': token
 }
 
-export const _getData = (type, method) => {
-  const options = {
-    method: method,
-    headers: new Headers({
-      'Authorization': 'blah',
-    }),
-  };
+export const _fetch = (type, method, options = {}) => {
+  
+  options.method = method
+  options.headers = {
+    'Accept': 'application/json',
+    'Authorization': 'blah',
+    'Content-Type': 'application/json',
+  }
   return fetch(localAPIServ + type, options)
   .then(res => res.json())
 }

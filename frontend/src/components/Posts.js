@@ -41,7 +41,7 @@ class Posts extends Component {
 function mapStateToProps (state, ownProps) {
   
   const reShapedPosts = state.posts
-  const { category, sortBy } = ownProps
+  const { loc, category, sortBy } = ownProps
 
   // add comment num to post for easy display
   let pKeys = Object.keys(state.posts)

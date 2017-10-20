@@ -130,7 +130,7 @@ html {
                     }
 
                     .score {
-                      
+                      color: white;
                     }
                   }
 
@@ -168,6 +168,44 @@ html {
                 font-size: 2rem;
                 padding: 1rem;
                 color: white;
+              }
+            } // ul.posts
+
+            .single-view {
+              display: flex;
+              flex: 5;
+              padding: 0;
+              justify-content: center;
+              flex-direction: column;
+              background-color: rgba(0,0,0,0.5);
+              font-size: 2rem;
+              color: white;
+              padding: 5rem;
+
+              label {
+                margin-left: 1rem;
+                text-shadow: 0 0 15px dodgerblue, 0 0 20px dodgerblue;
+              }
+              select,
+              input,
+              textarea {
+                margin: 1rem;
+                color: white;
+                background-color: rgba(255,255,255,0.2);
+              }
+
+              select, button {
+                width: 200px;
+                text-align: center;
+              }
+              input {
+                width: 50%;
+              }
+              textarea {
+                height: 300px;
+              }
+              button {
+                align-self: center;
               }
             }
 

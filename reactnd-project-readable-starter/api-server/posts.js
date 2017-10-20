@@ -65,7 +65,6 @@ function getAll (token) {
 function add (token, post) {
   return new Promise((res) => {
     let posts = getData(token)
-
     posts[post.id] = {
       id: post.id,
       timestamp: post.timestamp,
@@ -74,7 +73,8 @@ function add (token, post) {
       author: post.author,
       category: post.category,
       voteScore: 1,
-      deleted: false
+      deleted: false,
+      commentNum: 0
     }
 
     res(posts[post.id])

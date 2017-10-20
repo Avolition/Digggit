@@ -45,7 +45,7 @@ function posts(state = [], action) {
         return {
           ...state,
             [action.id]: {
-              id: action,
+              id: action.id,
               timestamp: action.timestamp,
               title: action.title,
               body: action.body,

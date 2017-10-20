@@ -18,14 +18,14 @@ class Sidebar extends Component {
   }
 
   render() {
-    const { categories, sortBy, _setCategory, _setSortBy } = this.props
+    const { categories, sortBy, _setCategory, _setSortBy, history } = this.props
 
     // populate sidebar category list
     const categoryList = 
       categories.map(field => {
         const path = field.path
         const classes = window.location.href === localAPIClient+path ? 'category active' : 'category'
-        return (<Link onClick={() => _setCategory(field.name)} key={field.name} to={path}><li className={classes}>{capitalize(field.name)}</li></Link>)
+        return (<Link onClick={() => _setCategory(field.name)} key={field.name} to={'/'+path}><li className={classes}>{capitalize(field.name)}</li></Link>)
       })
     
     // populate sidebar sortBy list
@@ -45,6 +45,9 @@ class Sidebar extends Component {
           <h6>Sort By</h6>
           {sortByList}
         </ul>
+        {history.location.pathname === '/posts/new'
+          ? null
+          : <Link to='/posts/new'><button>Add Post</button></Link>}
       </aside>
     )
   }

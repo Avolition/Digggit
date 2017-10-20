@@ -10,7 +10,7 @@ export function loadPosts ( posts ) {
   }
 }
 
-export function createPost ({ id, timestamp, title, body, author, category, voteScore }) {
+export function createPost ({ id, timestamp, title, body, author, category, voteScore, commentNum }) {
   return {
     type: CREATE_POST,
     id,
@@ -19,7 +19,8 @@ export function createPost ({ id, timestamp, title, body, author, category, vote
     body,
     author,
     category,
-    voteScore
+    voteScore,
+    commentNum
   }
 }
 

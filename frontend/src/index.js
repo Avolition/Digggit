@@ -2,7 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 // new react router
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 // import store config
 import store from './redux/store'
@@ -13,8 +13,8 @@ import App from './components/App'
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <Router>
+      <Route path="/" component={App} />
+    </Router>
   </Provider>
   , document.getElementById('root'))
