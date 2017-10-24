@@ -14,7 +14,6 @@ const headers = {
 }
 
 export const _fetch = (type, method, options = {}) => {
-  
   options.method = method
   options.headers = {
     'Accept': 'application/json',

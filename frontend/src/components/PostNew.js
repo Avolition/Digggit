@@ -14,9 +14,9 @@ class PostNew extends Component {
       category: 'react',
       author: '',
       title: '',
-      body: '',
+      body: ''
     }
-    this._addPost = this._addPost.bind(this);
+    this._addPost = this._addPost.bind(this)
   }
 
   _handleChange = (e) => {
@@ -25,13 +25,13 @@ class PostNew extends Component {
 
   _addPost = (e) => {
     e.preventDefault()
-    const id = uuid();
-
-    const options = {
+    const id = uuid() // set unique id
+    const { category } = this.state
+    const options = { // set options
       body: JSON.stringify({
         'id': id,
         'timestamp': Date.now(),
-        'category': this.state.category,
+        'category': category,
         'author': this.state.author,
         'title': this.state.title,
         'body': this.state.body,
@@ -40,21 +40,20 @@ class PostNew extends Component {
     };
     _fetch('posts', 'POST', options
       ).then(res => {
-        console.log(res)
         this.props.dispatch(createPost(res))
-        this.props.history.push(`/posts/${id}`)
+        this.props.history.push(`/${category}/${id}`)
       }).catch(err => console.log('error adding post', err))
   }
 
   render() {
+    // pull categories array and map into react elements
     const { categories } = this.props
-
     const allCats = categories.map(cat => {
       return <option key={cat.path} value={cat.path}>{capitalize(cat.name)}</option>
     })
     
     return (
-      <form className='single-view' action="/posts" onSubmit={this._addPost} method='POST'>
+      <form action="/posts" onSubmit={this._addPost} method='POST'>
         <label>Category</label>
         <select value={this.state.category} onChange={this._handleChange} name="category">
           {allCats}

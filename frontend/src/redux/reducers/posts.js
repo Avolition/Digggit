@@ -2,27 +2,36 @@
 import {
   LOAD_POSTS,
   CREATE_POST,
-  UPDATE_POST,
+  UPVOTE_POST,
+  DOWNVOTE_POST,
+  EDIT_POST,
   DELETE_POST,
 } from '../actions/posts'
 
 
-// function postReducers(state = [], action) {
-//   switch(action.type){
-//     case CREATE_POST :
-//       console.log('CREATE_POST TRIGGERED');
-//       return state;
-//     case UPDATE_POST :
-//       console.log('UPDATE_POST TRIGGERED');
-//       return state;
-//     case DELETE_POST :
-//       console.log('DELETE_POST TRIGGERED');
-//       return state;
-//     default:
-//       return state;
-//   }
-//   return state;
-// }
+function postReducers(state = [], action) {
+  switch(action.type){
+    case UPVOTE_POST :
+      return {
+        ...state,
+          voteScore: state.voteScore + 1 // return post with voteScore + 1
+      }
+    case DOWNVOTE_POST :
+      return {
+        ...state,
+          voteScore: state.voteScore - 1 // return post with voteScore + 1
+      }
+    case EDIT_POST :
+      const newState = {
+        ...state,
+          title: action.title,
+          body: action.body
+      }
+      return newState
+    default:
+      return state;
+  }
+}
 
 function posts(state = [], action) {
   if(typeof action.type !== 'undefined') {
@@ -54,14 +63,25 @@ function posts(state = [], action) {
               voteScore: action.voteScore
             }
         };
-      case UPDATE_POST :
-      
-        console.log('UPDATE_POST TRIGGERED: ', action);
-
-        return state;
+      case UPVOTE_POST :
+        return {
+          ...state,
+            [action.id]: postReducers(state[action.id], action)
+        }
+      case DOWNVOTE_POST :
+        return {
+          ...state,
+            [action.id]: postReducers(state[action.id], action)
+        }
+      case EDIT_POST :
+        return {
+          ...state,
+          [action.id]: postReducers(state[action.id], action)
+        }
       case DELETE_POST :
-        console.log('DELETE_POST TRIGGERED: ', action);
-        return state;
+        const newState = { ...state }
+        delete newState[action.id]
+        return newState
       default:
         return state;
     }

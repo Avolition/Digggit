@@ -41,7 +41,7 @@ class Posts extends Component {
 function mapStateToProps (state, ownProps) {
   
   const reShapedPosts = state.posts
-  const { loc, category, sortBy } = ownProps
+  const { category, sortBy } = ownProps
 
   // add comment num to post for easy display
   let pKeys = Object.keys(state.posts)
@@ -55,10 +55,8 @@ function mapStateToProps (state, ownProps) {
   if (category !== 'all') {
     displayPosts = displayPosts.filter(post => category === post.category ? true : false)
   }
-  // convert to array & filter based on user selected category
-  const sortedPosts = sortBy === 'voteScore'
-    ? displayPosts.sort((a, b) => b[sortBy] - a[sortBy])
-    : displayPosts.sort((a, b) => a[sortBy] - b[sortBy])
+  // sort based on user selected method
+  const sortedPosts = displayPosts.sort((a, b) => b[sortBy] - a[sortBy])
 
   return {
     posts: sortedPosts

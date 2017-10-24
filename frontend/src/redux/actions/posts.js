@@ -1,6 +1,8 @@
 export const LOAD_POSTS = 'LOAD_POSTS'
 export const CREATE_POST = 'CREATE_POST'
-export const UPDATE_POST = 'UPDATE_POST'
+export const UPVOTE_POST = 'UPVOTE_POST'
+export const DOWNVOTE_POST = 'DOWNVOTE_POST'
+export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
 
 export function loadPosts ( posts ) {
@@ -24,16 +26,26 @@ export function createPost ({ id, timestamp, title, body, author, category, vote
   }
 }
 
-export function updatePost ({ id, timestamp, title, body, author, category, voteScore }) {
+export function upVotePost ({ id }) {
   return {
-    type: UPDATE_POST,
+    type: UPVOTE_POST,
     id,
-    timestamp,
+  }
+}
+
+export function downVotePost ({ id }) {
+  return {
+    type: DOWNVOTE_POST,
+    id,
+  }
+}
+
+export function editPost ({ id, title, body }) {
+  return {
+    type: EDIT_POST,
+    id,
     title,
     body,
-    author,
-    category,
-    voteScore
   }
 }
 

@@ -1,6 +1,6 @@
 // import package deps
 import React, { Component } from 'react'
-import { Route, Redirect, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Loader from 'react-loader'
 // import components
@@ -8,6 +8,7 @@ import Sidebar from './Sidebar'
 import Posts from './Posts'
 import PostMax from './PostMax'
 import PostNew from './PostNew'
+import PostEdit from './PostEdit'
 // import action creators
 import { loadCategories } from '../redux/actions/categories'
 import { loadPosts } from '../redux/actions/posts'
@@ -65,9 +66,6 @@ class Main extends Component {
         ? <Loader color="#FFF" />
         :
         <section className="main">
-          <Route exact path='/'
-            render={() => <Redirect to='/all' />}
-          />
           <Sidebar
             category={category}
             sortBy={sortBy}
@@ -87,17 +85,16 @@ class Main extends Component {
           <Switch>
             <Route exact path='/posts/new' render={() =>
               <PostNew
-                categories={this.props.categories}
-                _addPost={post => this._addPost(post)}
-                _getPost={post => this._getPost(post)}
                 {...this.props}
               />
             }/>
+            <Route path='/:category/:post_id/edit'
+              component={PostEdit}
+              {...this.props}
+            />
             <Route path='/:category/:post_id'
-              render={() => (
-              <PostMax
-                sortBy={sortBy}
-            />)}
+              component={PostMax}
+              {...this.props}
             />
           </Switch>
         </section>

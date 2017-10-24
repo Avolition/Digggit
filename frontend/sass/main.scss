@@ -171,7 +171,7 @@ html {
               }
             } // ul.posts
 
-            .single-view {
+            form {
               display: flex;
               flex: 5;
               padding: 0;
@@ -181,6 +181,12 @@ html {
               font-size: 2rem;
               color: white;
               padding: 5rem;
+              margin-left: 5px;
+
+              div {
+                display: flex;
+                flex-direction: column;
+              }
 
               label {
                 margin-left: 1rem;
@@ -206,6 +212,33 @@ html {
               }
               button {
                 align-self: center;
+
+                &.delete-button {
+                  color: red;
+                  align-self: flex-end;
+                }
+
+              }
+            } // form
+
+            .single-view {
+              display: flex;
+              flex: 5;
+              padding: 0;
+              justify-content: top;
+              flex-direction: column;
+              background-color: rgba(0,0,0,0.5);
+              font-size: 2rem;
+              color: white;
+              margin-left: 5px;
+
+              .posts {
+                flex: 0;
+                margin: 0;
+              }
+              .post-body {
+                display: flex;
+                margin-left: 2rem;
               }
             }
 
