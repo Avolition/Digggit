@@ -31,7 +31,6 @@ _handleChange = (e) => {
     }
     _fetch(`comments/${comment.id}`, 'PUT', options
       ).then(res => {
-        console.log('res: ', res)
         this.props.dispatch(updateComment(res))
         this.props.history.push(`/${post.category}/${post.id}`)
       }).catch(err => console.log('error adding post', err))
