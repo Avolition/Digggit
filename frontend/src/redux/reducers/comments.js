@@ -2,26 +2,34 @@
 import {
   LOAD_COMMENTS,
   CREATE_COMMENT,
+  UPVOTE_COMMENT,
+  DOWNVOTE_COMMENT,
   UPDATE_COMMENT,
-  DELETE_COMMENT,
+  DELETE_COMMENT
 } from '../actions/comments'
 
-// function commentActions(state = [], action) {
-//   switch(action.type){
-//     case CREATE_COMMENT :
-//       console.log('CREATE_COMMENT TRIGGERED');
-//       return state;
-//     case UPDATE_COMMENT :
-//       console.log('UPDATE_COMMENT TRIGGERED');
-//       return state;
-//     case DELETE_COMMENT :
-//       console.log('DELETE_COMMENT TRIGGERED');
-//       return state;
-//     default:
-//       return state;
-//   }
-//   return state;
-// }
+function commentReducers(state = [], action) {
+  switch(action.type){
+    case UPVOTE_COMMENT :
+      return {
+        ...state,
+          voteScore: state.voteScore + 1 // return post with voteScore + 1
+      }
+    case DOWNVOTE_COMMENT :
+      return {
+        ...state,
+          voteScore: state.voteScore - 1 // return post with voteScore + 1
+      }
+    case UPDATE_COMMENT :
+      return {
+        ...state,
+          timestamp: action.timestamp,
+          body: action.body
+      }
+    default:
+      return state
+  }
+}
 
 function comments(state = [], action) {
   if(typeof action.type !== 'undefined') {
@@ -40,19 +48,41 @@ function comments(state = [], action) {
         })
         return initialState
       case CREATE_COMMENT :
-        console.log('CREATE_COMMENT TRIGGERED: ', action);
-        return state;
+        return {
+          ...state,
+            [action.id]: {
+              id: action.id,
+              parentId: action.parentId,
+              timestamp: action.timestamp,
+              body: action.body,
+              author: action.author,
+              voteScore: action.voteScore
+            }
+        };
+      case UPVOTE_COMMENT :
+        return {
+          ...state,
+            [action.id]: commentReducers(state[action.id], action)
+        }
+      case DOWNVOTE_COMMENT :
+        return {
+          ...state,
+            [action.id]: commentReducers(state[action.id], action)
+        }
       case UPDATE_COMMENT :
-        console.log('UPDATE_COMMENT TRIGGERED: ', action);
-        return state;
+        return {
+          ...state,
+            [action.id]: commentReducers(state[action.id], action)
+        }
       case DELETE_COMMENT :
-        console.log('DELETE_COMMENT TRIGGERED: ', action);
-        return state;
+        const newState = { ...state }
+        delete newState[action.id]
+        return newState
       default :
-        return state;
+        return state
     }
   }
-  return state;
+  return state
 }
 
-export default comments;
+export default comments

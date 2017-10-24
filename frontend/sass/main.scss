@@ -100,12 +100,18 @@ html {
               }
             } // aside
 
-            .posts {
+            .comments-wrapper {
+              margin: none;
+            }
+
+            .posts,
+            .comments {
               list-style: none;
               flex: 5;
               padding: 0;
 
-              .post {
+              .post,
+              .comment {
                 margin: 5px;
                 font-size: 2rem;
                 padding: 1rem;
@@ -152,7 +158,6 @@ html {
                         text-shadow: 0 0 15px dodgerblue, 0 0 20px dodgerblue;
                       }
                     }
-
                   }
                 }
 
@@ -163,6 +168,28 @@ html {
                   background-color: rgba(255,255,255,0.2);
                 }
               }
+              .comment {
+                font-size: 1rem;
+                margin: 0;
+
+                div.rank-vote > .vote,
+                div.rank-vote > .score {
+                  font-size: 2rem;
+                }
+                .comment-all {
+                  flex: 5;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  font-size: 1.5rem;
+                  color: grey;
+                  
+                  span.comment-body {
+                    color: white;
+                  }
+                }
+              }
+
               .noData {
                 text-align: center;
                 font-size: 2rem;
@@ -183,6 +210,16 @@ html {
               padding: 5rem;
               margin-left: 5px;
 
+              textarea {
+                height: 100px;
+              }
+
+              select,
+              button {
+                width: 100px;
+                text-align: center;
+              }
+
               div {
                 display: flex;
                 flex-direction: column;
@@ -200,7 +237,8 @@ html {
                 background-color: rgba(255,255,255,0.2);
               }
 
-              select, button {
+              select,
+              button {
                 width: 200px;
                 text-align: center;
               }
@@ -216,6 +254,19 @@ html {
                 &.delete-button {
                   color: red;
                   align-self: flex-end;
+                }
+              }
+
+              &.comment-form {
+                font-size: 1.5rem;
+                padding: 1rem;
+                
+                textarea {
+                  min-height: 100px;
+                }
+
+                .comment-button {
+                  min-height: 30px;
                 }
 
               }

@@ -37,7 +37,7 @@ class PostNew extends Component {
         'body': this.state.body,
         'commentNum': 0
       })
-    };
+    }
     _fetch('posts', 'POST', options
       ).then(res => {
         this.props.dispatch(createPost(res))

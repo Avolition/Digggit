@@ -19,7 +19,6 @@ class Sidebar extends Component {
 
   render() {
     const { categories, sortBy, _setCategory, _setSortBy, history } = this.props
-
     // populate sidebar category list
     const categoryList = 
       categories.map(field => {
@@ -54,8 +53,8 @@ class Sidebar extends Component {
 
 }
 
-function mapStateToProps ({ categories }) {
-  return {categories}
+function mapStateToProps ({ sortBy, categories }) {
+  return {sortBy, categories}
 } // mapStateToProps
 
 export default connect(mapStateToProps)(Sidebar)

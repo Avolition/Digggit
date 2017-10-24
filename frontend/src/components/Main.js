@@ -9,10 +9,12 @@ import Posts from './Posts'
 import PostMax from './PostMax'
 import PostNew from './PostNew'
 import PostEdit from './PostEdit'
+import CommentEdit from './CommentEdit'
 // import action creators
 import { loadCategories } from '../redux/actions/categories'
 import { loadPosts } from '../redux/actions/posts'
 import { loadComments } from '../redux/actions/comments'
+import { setSortBy } from '../redux/actions/sortBy'
 // import helpers
 import { _fetch } from '../js/DiggitAPI'
 
@@ -21,7 +23,6 @@ class Main extends Component {
   state = {
     category: null, // category currently selected / displayed
     loader: true,
-    sortBy: 'voteScore', // current post sort method
   }
 
   // fn for user to change displayed category
@@ -31,7 +32,7 @@ class Main extends Component {
 
   // fn for user to change post sort method
   _setSortBy = (sort) => {
-    this.setState({ sortBy: sort })
+    this.props.dispatch(setSortBy(sort))
   }
 
   componentDidMount = () => {
@@ -40,26 +41,27 @@ class Main extends Component {
     _fetch('categories', 'GET')
     .then(res => {
       this.setState({ loader: false, category: this.props.match.params.category });
-      this.props.dispatch(loadCategories(res));
+      this.props.dispatch(loadCategories(res))
     }).catch(err => console.log('error retrieving categories: ', err))
 
     // load posts into store
     _fetch('posts', 'GET')
     .then(res => {
-      this.props.dispatch(loadPosts(res));
+      this.props.dispatch(loadPosts(res))
     }).catch(err => console.log('error retrieving posts: ', err))
 
     // load comments into store
     _fetch('comments', 'GET')
     .then(res => {
-      this.props.dispatch(loadComments(res));
+      this.props.dispatch(loadComments(res))
     }).catch(err => console.log('error retrieving posts: ', err))
 
+    this.props.dispatch(setSortBy('voteScore'))
   }
   // render 
   render() {
 
-    const { category, sortBy } = this.state
+    const { category } = this.state
 
     return (
       this.state.loader
@@ -68,7 +70,6 @@ class Main extends Component {
         <section className="main">
           <Sidebar
             category={category}
-            sortBy={sortBy}
             _setCategory={cat => this._setCategory(cat)}
             _setSortBy={sort => this._setSortBy(sort)}
             {...this.props}
@@ -77,7 +78,6 @@ class Main extends Component {
             render={() => (
             <Posts
               category={category}
-              sortBy={sortBy}
               {...this.props}
             />
             )}
@@ -88,8 +88,12 @@ class Main extends Component {
                 {...this.props}
               />
             }/>
-            <Route path='/:category/:post_id/edit'
+            <Route exact path='/:category/:post_id/edit'
               component={PostEdit}
+              {...this.props}
+            />
+            <Route exact path='/:category/:post_id/:comment_id/'
+              component={CommentEdit}
               {...this.props}
             />
             <Route path='/:category/:post_id'

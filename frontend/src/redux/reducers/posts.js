@@ -22,12 +22,11 @@ function postReducers(state = [], action) {
           voteScore: state.voteScore - 1 // return post with voteScore + 1
       }
     case EDIT_POST :
-      const newState = {
+      return {
         ...state,
           title: action.title,
           body: action.body
       }
-      return newState
     default:
       return state;
   }

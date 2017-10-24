@@ -6,8 +6,9 @@ import { routerReducer } from 'react-router-redux'
 import categories from './categories'
 import posts from './posts'
 import comments from './comments'
+import sortBy from './sortBy'
 
 // combine own reducers and routerReducer
-const rootReducer = combineReducers({ categories, posts, comments, routing: routerReducer })
+const rootReducer = combineReducers({ categories, posts, comments, sortBy, routing: routerReducer })
 
 export default rootReducer
