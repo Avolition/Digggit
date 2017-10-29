@@ -33,6 +33,25 @@ html {
           align-items: center;
           flex-direction: column;
 
+          .error {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+
+            h1 {
+              color: white;
+              font-size: 2vw;
+            }
+            button {
+              width: 200px;
+              height: 50px;
+              font-size: 2rem;
+            }
+          }
+
           header {
 
             .header {

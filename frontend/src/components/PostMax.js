@@ -1,16 +1,13 @@
 // import package deps
 import React, { Component } from 'react'
-// import { withRouter, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-// import moment from 'moment'
 // import components
 import Loader from 'react-loader'
 import PostMin from './PostMin'
 import Comments from './Comments'
 // import action creators
 import { createComment } from '../redux/actions/comments'
-// import icons
-// import { FaArrowCircleOUp, FaArrowCircleUp, FaComments } from 'react-icons/lib/fa'
 // import helpers
 import { _fetch } from '../js/DiggitAPI'
 import uuid from 'uuid/v1'
@@ -21,8 +18,7 @@ class PostMax extends Component {
     this.state = {
       author: '',
       body: '',
-      voted: false,
-      loader: true
+      voted: false
     }
     this._addComment = this._addComment.bind(this)
   }
@@ -51,6 +47,15 @@ class PostMax extends Component {
         this.props.history.push(`/${post.category}/${post.id}`)
         this.setState({ author: '', body: '' })
       }).catch(err => console.log('error adding post', err))
+  }
+
+  componentDidMount = () => {
+    // if no data populates, redirect to 404 page after 3 seconds
+    setTimeout(function() {
+      if(document.querySelector('.loader') != null) {
+        this.props.history.push(`/error`)
+      }
+    }.bind(this), 3000)
   }
 
   render() {
@@ -91,4 +96,5 @@ const mapStateToProps = (state, ownProps) => {
   }
 } // mapStateToProps
 
-export default connect(mapStateToProps)(PostMax)
+export default connect(mapStateToProps)(withRouter(PostMax))
+// withRouter not needed, but leaving in so I can find it later

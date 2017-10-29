@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Loader from 'react-loader'
 // import components
+import Header from './Header'
 import Sidebar from './Sidebar'
 import Posts from './Posts'
 import PostMax from './PostMax'
@@ -35,6 +36,11 @@ class Main extends Component {
     this.props.dispatch(setSortBy(sort))
   }
 
+  _redirectOnError = () => {
+    // if loader still active, redirect to 404 page
+
+  }
+
   componentDidMount = () => {
 
     // load categories into store
@@ -56,53 +62,69 @@ class Main extends Component {
       this.props.dispatch(loadComments(res))
     }).catch(err => console.log('error retrieving posts: ', err))
 
+    // always set sort to voteScore on load
     this.props.dispatch(setSortBy('voteScore'))
+
+    // if no data populates, redirect to 404 page after 3 seconds
+    setTimeout(function() {
+      if(this.state.loader === true) {
+        this.props.history.push(`/error`)
+      }
+    }.bind(this), 3000)
+
+
   }
+
   // render 
   render() {
 
     const { category } = this.state
 
     return (
-      this.state.loader
-        ? <Loader color="#FFF" />
-        :
-        <section className="main">
-          <Sidebar
-            category={category}
-            _setCategory={cat => this._setCategory(cat)}
-            _setSortBy={sort => this._setSortBy(sort)}
-            {...this.props}
-          />
-          <Route exact path='/:category'
-            render={() => (
-            <Posts
-              category={category}
-              {...this.props}
-            />
-            )}
-          />
-          <Switch>
-            <Route exact path='/posts/new' render={() =>
-              <PostNew
+      <div className="app">
+        <main>
+          <Header title='Diggit'/>
+          {this.state.loader
+            ? <Loader color="#FFF" />
+            :
+            <section className="main">
+              <Sidebar
+                category={category}
+                _setCategory={cat => this._setCategory(cat)}
+                _setSortBy={sort => this._setSortBy(sort)}
                 {...this.props}
               />
-            }/>
-            <Route exact path='/:category/:post_id/edit'
-              component={PostEdit}
-              {...this.props}
-            />
-            <Route exact path='/:category/:post_id/:comment_id/'
-              component={CommentEdit}
-              {...this.props}
-            />
-            <Route path='/:category/:post_id'
-              component={PostMax}
-              {...this.props}
-            />
-          </Switch>
-        </section>
-
+              <Route exact path='/:category'
+                render={() => (
+                <Posts
+                  category={category}
+                  {...this.props}
+                />
+                )}
+              />
+              <Switch>
+                <Route exact path='/posts/new' render={() =>
+                  <PostNew
+                    {...this.props}
+                  />
+                }/>
+                <Route exact path='/:category/:post_id/edit'
+                  component={PostEdit}
+                  {...this.props}
+                />
+                <Route exact path='/:category/:post_id/:comment_id/'
+                  component={CommentEdit}
+                  {...this.props}
+                />
+                <Route path='/:category/:post_id'
+                  component={PostMax}
+                  {...this.props}
+                />
+              </Switch>
+            </section>
+            }
+        </main>
+      </div>
     )
   } // render
 } // component class

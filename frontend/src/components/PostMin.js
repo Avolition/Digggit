@@ -67,8 +67,6 @@ class PostMin extends Component {
 } // component class
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('ownProps:', ownProps.postId)
-  console.log('posts:', state.posts[ownProps.postId])
   const { posts, comments } = state
   const post = posts[ownProps.postId]
   // add comment num to post for easy display

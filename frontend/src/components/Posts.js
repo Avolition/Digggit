@@ -10,22 +10,12 @@ class Posts extends Component {
 
     const { posts } = this.props
 
-    // populate posts to display by category
-    // const filteredPosts = category === 'all'
-    //   ? posts
-    //   : posts.filter(post => category === post.category ? true : false)
-
-
-    
-      // console.log("sortedPosts ", sortedPosts)
-
     // convert posts to React elements
     const displayPosts = posts.map((post, i) => {
         return (
             <PostMin key={post.id} postId={post.id} index={i} />
         )
     })
-    // console.log("displayPosts ", displayPosts)
 
     return (
       <ul className='posts'>

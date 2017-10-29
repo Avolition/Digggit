@@ -1,8 +1,8 @@
 // import package deps
 import React, { Component } from 'react'
-import { Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 // import components
-import Header from './Header'
+import ErrorPage from './ErrorPage'
 import Main from './Main'
 
 class App extends Component {
@@ -11,17 +11,13 @@ class App extends Component {
   render() {
 
     return (
-      <div className="app">
-        <main>
-          <Route exact path='/'
-            render={() => <Redirect to='/all' />}
-          />
-          <Route path='/' render={() => (
-            <Header title='Diggit'/>
-          )} />
-          <Route path="/:category" component={Main} />
-        </main>
-      </div>
+      <Switch>
+        <Route exact path='/'
+          render={() => <Redirect to='/all' />}
+        />
+        <Route exact path='/error' component={ErrorPage} />
+        <Route path="/:category" component={Main} />
+      </Switch>
     )
   } // render
 } // component class
