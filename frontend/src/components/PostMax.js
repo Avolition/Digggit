@@ -50,7 +50,6 @@ class PostMax extends Component {
         this.props.dispatch(createComment(res))
         this.props.history.push(`/${post.category}/${post.id}`)
         this.setState({ author: '', body: '' })
-        this.forceUpdate()
       }).catch(err => console.log('error adding post', err))
   }
 
