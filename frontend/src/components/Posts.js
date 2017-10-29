@@ -22,7 +22,7 @@ class Posts extends Component {
     // convert posts to React elements
     const displayPosts = posts.map((post, i) => {
         return (
-            <PostMin key={post.id} post={post} index={i} />
+            <PostMin key={post.id} postId={post.id} index={i} />
         )
     })
     // console.log("displayPosts ", displayPosts)

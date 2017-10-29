@@ -50,6 +50,7 @@ class PostMax extends Component {
         this.props.dispatch(createComment(res))
         this.props.history.push(`/${post.category}/${post.id}`)
         this.setState({ author: '', body: '' })
+        this.forceUpdate()
       }).catch(err => console.log('error adding post', err))
   }
 
@@ -62,7 +63,7 @@ class PostMax extends Component {
       {post && post.id
         ? <div className='single-view'>
             <ul className='posts'>
-              <PostMin post={post} />
+              <PostMin postId={post.id} />
             </ul>
             <div className='post-body'>
               <p>{post.body}</p>

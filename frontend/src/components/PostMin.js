@@ -51,7 +51,12 @@ class PostMin extends Component {
         </div>
         <div className='post-title'>
           <Link to={`/${post.category}/${post.id}`}><span className='title'>{post.title}</span></Link>
-          <span className='time'> Submitted {moment(post.timestamp).fromNow()} to d/{post.category} by {post.author} | <FaComments /> {post.commentNum} Comments </span>
+          <span className='time'> Submitted {moment(post.timestamp).fromNow()} to d/{post.category} by {post.author} | <FaComments /> {post.commentNum === 0 
+                              ? 'Leave the 1st Comment'
+                              : (post.commentNum > 1)
+                                ? `${post.commentNum} Comments`
+                                : `${post.commentNum} Comment`
+                              } </span>
         </div>
         <div className='post-button'>
           <Link to={`/${post.category}/${post.id}/edit`}><button>Edit</button></Link>
@@ -61,8 +66,17 @@ class PostMin extends Component {
   }
 } // component class
 
-const mapStateToProps = (state) => {
-  return state
+const mapStateToProps = (state, ownProps) => {
+  console.log('ownProps:', ownProps.postId)
+  console.log('posts:', state.posts[ownProps.postId])
+  const { posts, comments } = state
+  const post = posts[ownProps.postId]
+  // add comment num to post for easy display
+  const cKeys = Object.keys(comments)
+  const post_comments = cKeys.filter(ckey => comments[ckey].parentId === post.id)
+  post.commentNum = post_comments.length
+
+  return { post, comments: state.comments }
 }
 
 export default connect(mapStateToProps)(PostMin);
