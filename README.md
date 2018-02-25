@@ -1,6 +1,13 @@
 This is my submission for the final project of Udacity's React Redux course, forked from the [starter template here](https://github.com/udacity/reactnd-project-readable-starter). The initial template provided a simple backend RESTful server, to which the student is required to add a frontend UI with CRUD interactivity, similar to Reddit / Hacker News. I made some small edits to the backend server to allow for easier front-end development.
 
 ## View Options
+  * Site Preview
+
+    <img src="https://res.cloudinary.com/avolition/image/upload/v1519533341/Portfolio/Diggit.gif" width="100%" title="site preview gif" alt="site preview gif"/>
+    
+    <a href="https://res.cloudinary.com/avolition/video/upload/w_1080/v1519526639/Diggit_mov.mp4" rel="noreferrer noopener" target="_blank">View site preview as mp4</a>
+
+    -----
   <!-- * [Please visit the deployed page here at ] (tba) -->
   * Locally
     * Clone this repo
@@ -10,11 +17,10 @@ This is my submission for the final project of Udacity's React Redux course, for
     * run `npm install`, then `npm start`
 
 ## Skills Showcased
-  * Component composition 
-  <!-- utilizing:
+  * Component composition utilizing:
     * Controlled Components
     * Functional Components
-    * Stateless Functional Components -->
+    * Stateless Functional Components
   * SPA routing / managing app location utilizing [react-router](https://github.com/ReactTraining/react-router) [react-router-dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom) & [react-router-redux](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux)
   * State management utilizing Redux
 <!-- 
