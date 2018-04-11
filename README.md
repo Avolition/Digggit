@@ -4,9 +4,9 @@ This is my submission for the final project of Udacity's React Redux course, for
 
 * Site Preview
 
-  <img src="https://res.cloudinary.com/avolition/image/upload/v1523412966/Diggit2_gif.gif" width="100%" title="site preview gif" alt="site preview gif"/>
+  <img src="https://res.cloudinary.com/avolition/image/upload/v1523418748/Portfolio/Diggit2_gif.gif" width="100%" title="site preview gif" alt="site preview gif"/>
 
-  <a href="https://res.cloudinary.com/avolition/video/upload/c_scale,w_1080/v1523409825/Diggit2_mov.mp4" rel="noreferrer noopener" target="_blank">View site preview as mp4</a>
+  <a href="https://res.cloudinary.com/avolition/video/upload/c_scale,w_1080/Portfolio/v1523409825/Diggit2_mov.mp4" rel="noreferrer noopener" target="_blank">View site preview as mp4</a>
 
   ---
 
