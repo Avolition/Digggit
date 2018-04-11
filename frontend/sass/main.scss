@@ -1,5 +1,5 @@
 // import normalize.css
-@import "normalize/import-now";
+@import 'normalize/import-now';
 
 @import url('https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display');
 
@@ -9,19 +9,19 @@ $font-stack: Helvetica, sans-serif;
 html {
   font-size: 10px;
   font-family: 'helvetica neue', Helvetica, sans-serif;
-  
+
   body {
     min-height: 100vh;
     min-width: 100vw;
     display: flex;
     justify-content: center;
-    background: url('https://res.cloudinary.com/avolition/image/upload/c_scale,f_auto,q_auto:low,w_1920/v1508128564/Backgrounds/_TechnoLandscape.jpg');
-    
+    background: url('https://res.cloudinary.com/avolition/image/upload/c_scale,f_auto,q_auto:low,w_1920/v1522903316/Backgrounds/TechnoLandscape_Retro.jpg');
+
     #root {
       width: 1100px;
       display: flex;
       justify-content: center;
-    
+
       .app {
         width: 100%;
         display: flex;
@@ -53,13 +53,13 @@ html {
           }
 
           header {
-
             .header {
-            font-family: $font-heading;
-            color: red;
-            font-size: 12rem;
-            margin: 2rem 0 0 0;
-            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px red, 0 0 35px red, 0 0 40px red, 0 0 50px red, 0 0 75px red;
+              font-family: $font-heading;
+              color: red;
+              font-size: 12rem;
+              margin: 2rem 0 0 0;
+              text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px red, 0 0 35px red,
+                0 0 40px red, 0 0 50px red, 0 0 75px red;
             }
           } // header
 
@@ -67,7 +67,7 @@ html {
             width: 100%;
             display: flex;
             justify-content: space;
-            
+
             aside {
               text-align: center;
               font-size: 2.5rem;
@@ -82,38 +82,38 @@ html {
                 li {
                   list-style: none;
                   padding: 0;
-
                 }
               }
-              
+
               .categories,
               .sortByList {
                 list-style: none;
                 padding: 0;
                 flex-direction: column;
                 color: blue;
-                text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 10px dodgerblue, 0 0 15px dodgerblue, 0 0 20px dodgerblue, 0 0 25px dodgerblue;
+                text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 10px dodgerblue, 0 0 15px dodgerblue,
+                  0 0 20px dodgerblue, 0 0 25px dodgerblue;
                 text-align: center;
 
                 .category,
                 .sortByField {
                   padding: 1rem;
-                  background-color: rgba(0,0,0,0.2);
+                  background-color: rgba(0, 0, 0, 0.2);
                   align-self: center;
                   cursor: pointer;
 
                   &:hover {
                     color: blue;
-                    background-color: rgba(255,255,255,0.2);
+                    background-color: rgba(255, 255, 255, 0.2);
                   }
                   &.active {
-                    background-color: rgba(255,255,255,0.2);
+                    background-color: rgba(255, 255, 255, 0.2);
                   }
                 }
                 a {
                   text-decoration: none;
                   &:visited {
-                    color:inherit;
+                    color: inherit;
                   }
                 }
               }
@@ -134,7 +134,7 @@ html {
                 margin: 5px;
                 font-size: 2rem;
                 padding: 1rem;
-                background-color: rgba(0,0,0,0.5);
+                background-color: rgba(0, 0, 0, 0.5);
                 display: flex;
 
                 div {
@@ -181,10 +181,10 @@ html {
                 }
 
                 &:hover {
-                  background-color: rgba(255,255,255,0.2);
+                  background-color: rgba(255, 255, 255, 0.2);
                 }
                 &.active {
-                  background-color: rgba(255,255,255,0.2);
+                  background-color: rgba(255, 255, 255, 0.2);
                 }
               }
               .comment {
@@ -202,7 +202,7 @@ html {
                   justify-content: center;
                   font-size: 1.5rem;
                   color: grey;
-                  
+
                   span.comment-body {
                     color: white;
                   }
@@ -223,7 +223,7 @@ html {
               padding: 0;
               justify-content: center;
               flex-direction: column;
-              background-color: rgba(0,0,0,0.5);
+              background-color: rgba(0, 0, 0, 0.5);
               font-size: 2rem;
               color: white;
               padding: 5rem;
@@ -253,7 +253,7 @@ html {
               textarea {
                 margin: 1rem;
                 color: white;
-                background-color: rgba(255,255,255,0.2);
+                background-color: rgba(255, 255, 255, 0.2);
               }
 
               select,
@@ -279,7 +279,7 @@ html {
               &.comment-form {
                 font-size: 1.5rem;
                 padding: 1rem;
-                
+
                 textarea {
                   min-height: 100px;
                 }
@@ -287,7 +287,6 @@ html {
                 .comment-button {
                   min-height: 30px;
                 }
-
               }
             } // form
 
@@ -297,7 +296,7 @@ html {
               padding: 0;
               justify-content: top;
               flex-direction: column;
-              background-color: rgba(0,0,0,0.5);
+              background-color: rgba(0, 0, 0, 0.5);
               font-size: 2rem;
               color: white;
               margin-left: 5px;
@@ -311,7 +310,6 @@ html {
                 margin-left: 2rem;
               }
             }
-
           } // section
         } // main
       }
